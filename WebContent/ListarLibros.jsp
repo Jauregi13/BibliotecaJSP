@@ -14,6 +14,7 @@ ArrayList<Libro> libros = new ArrayList();
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <title>Listado de libros</title>
 </head>
 <body>
@@ -24,6 +25,7 @@ ArrayList<Libro> libros = new ArrayList();
 <tr>
 <td>Titulo</td>
 <td>Autor</td>
+<td></td>
 </tr>
 <%
 
@@ -34,6 +36,7 @@ while(i.hasNext()){
 	out.print("<tr>");
 	out.print("<td>" + libro.getTitulo() + "</td>");
 	out.print("<td>" + libro.getAutor() + "</td>");
+	out.print("<td><a href=InformacionLibro.jsp?id="+libro.getId()+">Ver</a></td>");
 	out.print("</tr>");
 }
 

@@ -23,6 +23,7 @@ out.print("<td>DNI</td>");
 out.print("<td>nombre</td>");
 out.print("<td>apellido</td>");
 out.print("<td>fecha de nacimiento</td>");
+out.print("<td></td>");
 out.print("</tr>");
 
 Iterator<Usuario> i = usuarios.iterator();
@@ -34,11 +35,12 @@ while(i.hasNext()){
 	out.print("<td>"+usuario.getNombre()+"</td>");
 	out.print("<td>"+usuario.getApellido()+"</td>");
 	out.print("<td>"+usuario.getFecha_nacimiento()+"</td>");
+	out.print("<td><a href='#'>Ver</a></td>");
 	out.print("</tr>");
 
 }
 
-
+out.print("</table>");
 
 %>
 </body>
