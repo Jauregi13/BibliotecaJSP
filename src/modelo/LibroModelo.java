@@ -98,7 +98,9 @@ public class LibroModelo extends Conector{
 			pst.setString(1, libro.getTitulo());
 			pst.setString(2, libro.getAutor());
 			
-			pst.execute();
+			if (pst.execute()){
+				System.out.println("Se ha añadido el libro");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

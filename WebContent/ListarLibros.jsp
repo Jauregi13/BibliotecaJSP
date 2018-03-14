@@ -36,16 +36,17 @@ while(i.hasNext()){
 	out.print("<tr>");
 	out.print("<td>" + libro.getTitulo() + "</td>");
 	out.print("<td>" + libro.getAutor() + "</td>");
-	out.print("<td><a href=InformacionLibro.jsp?id="+libro.getId()+">Ver</a></td>");
+	out.print("<td><a href='InformacionLibro.jsp?id="+libro.getId()+"'>Ver</a></td>");
 	out.print("</tr>");
 }
 
 
 %>
-
-
 </table>
 
+<br>
+<br>
+<a href='CrearLibro.jsp'> Crear libro</a>
 
 </body>
 </html>
