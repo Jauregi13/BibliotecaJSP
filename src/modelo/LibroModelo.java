@@ -21,14 +21,17 @@ public class LibroModelo extends Conector{
 				libro.setId(rs.getInt("id"));
 				libro.setTitulo(rs.getString("titulo"));
 				libro.setAutor(rs.getString("autor"));
+				libro.setImagen(rs.getString("imagen"));
 				libros.add(libro);
 			}
+			
+			return libros;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return libros;
+		return null;
 	}
 	
 	public Libro select(int id){
@@ -37,10 +40,11 @@ public class LibroModelo extends Conector{
 			Statement st = super.conexion.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM libros WHERE id = " + id);
 			
-			while(rs.next()){
+			if(rs.next()){
 				libro.setId(rs.getInt("id"));
 				libro.setTitulo(rs.getString("titulo"));
 				libro.setAutor(rs.getString("autor"));
+				libro.setImagen(rs.getString("imagen"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -59,6 +63,7 @@ public class LibroModelo extends Conector{
 				libro.setId(rs.getInt("id"));
 				libro.setTitulo(rs.getString("titulo"));
 				libro.setAutor(rs.getString("autor"));
+				libro.setImagen(rs.getString("imagen"));
 				return libro;
 			}
 		} catch (SQLException e) {

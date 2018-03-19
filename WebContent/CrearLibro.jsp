@@ -15,11 +15,12 @@
 
 	<h1>Formulario para añadir libro</h1>
 
-	<form action="" method="post">
+	<form action="" method="post" enctype= "multipart/form-data">
 
 		Titulo del libro: <input type="text" name="titulo"> <br>
-		<br> Autor del libro: <input type="text" name="autor"> <br>
-
+		<br> Autor del libro: <input type="text" name="autor"> <br><br>
+		Imagen del libro: <input type="file" name= "imagen">
+		<br><br>
 		<input type="submit" value="añadir" name="anadir">
 
 	</form>
