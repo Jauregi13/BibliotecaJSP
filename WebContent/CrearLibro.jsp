@@ -15,12 +15,12 @@
 
 	<h1>Formulario para añadir libro</h1>
 
-	<form action="" method="post" enctype= "multipart/form-data">
+	<form action="" method="post">
 
 		Titulo del libro: <input type="text" name="titulo"> <br>
 		<br> Autor del libro: <input type="text" name="autor"> <br><br>
-		Imagen del libro: <input type="file" name= "imagen">
-		<br><br>
+		<!--Imagen del libro: <input type="file" name= "imagen">
+		<br><br> -->
 		<input type="submit" value="añadir" name="anadir">
 
 	</form>
@@ -38,12 +38,14 @@
 				if(libroModelo.select(titulo) != null){
 				
 					%>
-					<div class="alert alert-danger" role="alert">
+					<!--  <div class="alert alert-danger" role="alert">
 						Este titulo de libro ya existe <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-					</div>
+					</div> -->
 				<%
 				}
-				libroModelo.insert(libro);
+				else {
+					libroModelo.insert(libro);
+				}
 
 			}
 		
