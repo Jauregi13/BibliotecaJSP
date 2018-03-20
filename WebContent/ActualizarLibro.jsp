@@ -3,8 +3,10 @@
 <%@ page import ="modelo.*" %>
 <%
 LibroModelo libroModelo = new LibroModelo();
+int id = Integer.parseInt(request.getParameter("id"));
+Libro libro = libroModelo.select(id);
 
-
+String[] partesTitulo = libro.getTitulo().split(" ");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,11 +18,12 @@ LibroModelo libroModelo = new LibroModelo();
 
 <h1>Actualizar libro</h1>
 
-<form method = "post">
+<form action = "ConfirmarCambios.jsp" method = "post">
 
-Titulo del libro antiguo: <input type = "text" name =" titulo-antiguo">
+<input type = "hidden" name = "id" value ="<%=libro.getId() %>">
+Titulo del libro: <input type = "text" name = "titulo" value = "<%=libro.getTitulo() %>">
 <br>
-Titulo del libro nuevo <input type = "text" name = "titulo_nuevo">
+Autor: <input type = "text" name = "autor" value = "<%=libro.getAutor() %>">
 <br>
 <input type="submit" value ="Actualizar" name= "actualizar">
 
