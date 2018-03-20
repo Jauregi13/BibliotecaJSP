@@ -18,13 +18,14 @@ ArrayList<Libro> libros = new ArrayList();
 <title>Listado de libros</title>
 </head>
 <body>
-
+<jsp:include page="./includes/menu.html"></jsp:include>
 <h3>Listado de los libros</h3>
 
 <table border = 1>
 <tr>
 <td>Titulo</td>
 <td>Autor</td>
+<td></td>
 <td></td>
 </tr>
 <%
@@ -37,6 +38,7 @@ while(i.hasNext()){
 	out.print("<td>" + libro.getTitulo() + "</td>");
 	out.print("<td>" + libro.getAutor() + "</td>");
 	out.print("<td><a href='InformacionLibro.jsp?id="+libro.getId()+"'>Ver</a></td>");
+	out.print("<td><a href='ActualizarLibro.jsp?id="+libro.getId()+"'>Modificar</a></td>");
 	out.print("</tr>");
 }
 
