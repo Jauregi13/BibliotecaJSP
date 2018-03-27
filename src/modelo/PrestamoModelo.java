@@ -144,5 +144,26 @@ public class PrestamoModelo extends Conector {
 		}
 		return null;
 	}
+	
+	public boolean estaDisponible(Libro libro){
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("SELECT * FROM prestamos WHERE id_libro = ? and entregado = ?");
+			
+			pst.setInt(1, libro.getId());
+			pst.setBoolean(2, false);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()){
+				
+				return false;
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
 
 }

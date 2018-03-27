@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="http://localhost:8080/Biblioteca/css/style.css" type ="text/css">
 <style type="text/css">
 .site-header {
 	background-color: blue;
@@ -35,7 +36,7 @@ a:focus {
 	color: white;
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu a:hover, .dropdown-menu a:focus{
 	color: blue;
 }
 
@@ -48,6 +49,12 @@ li {
 	list-style: none;
 
 }
+
+.icon-home {
+
+	font-size : 25px;
+
+}
 </style>
 
 
@@ -55,22 +62,42 @@ li {
 <nav class="site-header sticky-top py-1">
 	<div
 		class="container d-flex flex-column flex-md-row justify-content-between">
-		<a class="py-2" href="#"></a>
+		<a class="py-2" href="http://localhost:8080/Biblioteca/HTML/index.jsp"><span class="icon-home"></span></a>
 		<li class="dropdown"><a class="py-2 d-none d-md-inline-block dropdown dropdown-toggle" data-toggle="dropdown" href="#">Libros</a>
 			<ul class="dropdown-menu">
-				<li><a class="dropdown-item" tabindex="-1" href="./../ListarLibros.jsp">Listar libros</a></li>
-				<li><a class="dropdown-item" tabindex="-1" href="#">Insertar libro</a></li>
-				<li><a class="dropdown-item" tabindex="-1" href="#">Modificar libro</a></li>
+				<li><a class="dropdown-item" tabindex="-1" href="http://localhost:8080/Biblioteca/ListarLibros.jsp">Listar libros</a></li>
+				<li><a class="dropdown-item" tabindex="-1" href="http://localhost:8080/Biblioteca/CrearLibro.jsp">Insertar libro</a></li>
 			</ul></li>
 		<li class="dropdown"><a class="py-2 d-none d-md-inline-block dropdown dropdown-toggle" data-toggle="dropdown" href="#">Usuarios</a>
 			<ul class="dropdown-menu">
-				<li><a class="dropdown-item" tabindex="-1" href="./../ListarLibros.jsp">Listar usuarios</a></li>
+				<li><a class="dropdown-item" tabindex="-1" href="Biblioteca/ListarUsuarios.jsp">Listar usuarios</a></li>
 				<li><a class="dropdown-item" tabindex="-1" href="#">Eliminar usuario</a></li>
 			</ul></li> 
 		<a class="py-2 d-none d-md-inline-block" href="#">Prestamos</a>
-		<a class="py-2 d-none d-md-inline-block" href="#" style="margin-left: 110px;">Registrarse</a> 
+		<a class="py-2 d-none d-md-inline-block" href="#registro" style="margin-left: 110px;" data-toogle ="modal">Registrarse</a> 
 		<a class="py-2 d-none d-md-inline-block" href="#" style="margin-right: -50px;">Iniciar Sesion</a>
 	</div>
 </nav>
+
+
+<div class="modal fade" id="registro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registro">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 

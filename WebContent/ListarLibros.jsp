@@ -6,6 +6,7 @@
 <%@ page import="java.util.Iterator" %>
 <%
 LibroModelo libroModelo = new LibroModelo();
+PrestamoModelo prestamoModelo = new PrestamoModelo();
 ArrayList<Libro> libros = new ArrayList();
 
 
@@ -17,6 +18,24 @@ ArrayList<Libro> libros = new ArrayList();
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <title>Listado de libros</title>
 </head>
+<style type ="text/css">
+
+td a {
+
+	color: black;
+
+}
+
+td {
+
+text-align: center;
+
+}
+
+
+
+
+</style>
 <body>
 <jsp:include page="./includes/menu.html"></jsp:include>
 <h3>Listado de los libros</h3>
@@ -25,8 +44,8 @@ ArrayList<Libro> libros = new ArrayList();
 <tr>
 <td>Titulo</td>
 <td>Autor</td>
-<td></td>
-<td></td>
+<td colspan="3">Acciones</td>
+<td>Estado</td>
 </tr>
 <%
 
@@ -37,8 +56,18 @@ while(i.hasNext()){
 	out.print("<tr>");
 	out.print("<td>" + libro.getTitulo() + "</td>");
 	out.print("<td>" + libro.getAutor() + "</td>");
-	out.print("<td><a href='InformacionLibro.jsp?id="+libro.getId()+"'>Ver</a></td>");
-	out.print("<td><a href='ActualizarLibro.jsp?id="+libro.getId()+"'>Modificar</a></td>");
+	out.print("<td><a href='InformacionLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-primary'><span class='icon-info'></span>Info</button></a></td>");
+	out.print("<td><a href='ActualizarLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-warning'>Modificar</button></a></td>");
+	out.print("<td><a href='ActualizarLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-danger' title='Eliminar libro'><span class='icon-circle-with-cross'</span></button></a></td>");
+	
+	if(prestamoModelo.estaDisponible(libro)){
+		out.print("<td class='table-success'><button type='button' class='btn btn-primary'>Prestar</td>");
+		
+	}
+	
+	else {
+		out.print("<td class='table-danger'></td>");
+	}
 	out.print("</tr>");
 }
 
