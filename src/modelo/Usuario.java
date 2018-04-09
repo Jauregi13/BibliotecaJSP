@@ -11,7 +11,7 @@ public class Usuario {
 	private int edad;
 	private String dni;
 	private Date fecha_nacimiento;
-	private String contrasena;
+	private String password;
 	private String rol;
 	private ArrayList<Prestamo> prestamos;
 	
@@ -19,6 +19,18 @@ public class Usuario {
 	
 	
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 	public String getDni() {
 		return dni;
 	}

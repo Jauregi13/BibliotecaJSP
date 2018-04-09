@@ -177,5 +177,25 @@ public class UsuarioModelo extends Conector{
 		
 		return null;
 	}
+	
+	public boolean usuarioExiste(String dni, String password){
+		
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("SELECT * FROM usuarios WHERE dni = ? AND password = ?");
+			
+			pst.setString(1, dni);
+			pst.setString(2, password);
+			ResultSet rs = pst.executeQuery();
+			
+			if(rs.next()){
+				
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 
 }
