@@ -11,7 +11,10 @@ public class Usuario {
 	private int edad;
 	private String dni;
 	private Date fecha_nacimiento;
+	private String contrasena;
+	private String rol;
 	private ArrayList<Prestamo> prestamos;
+	
 	
 	
 	
