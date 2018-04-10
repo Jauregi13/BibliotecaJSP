@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="modelo.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,23 +9,9 @@
 <body>
 
 <%
-UsuarioModelo usuarioModelo = new UsuarioModelo();
-String dni = request.getParameter("dni");
+	session.removeAttribute("usuario");
 
-String password = request.getParameter("password");
-
-if(usuarioModelo.usuarioExiste(dni, password)){
-	
-	Usuario usuario = usuarioModelo.selectPorDni(dni);
-	session.setAttribute("usuario", usuario);
 	response.sendRedirect("http://localhost:8080/Biblioteca/HTML/index.jsp");
-}
-
-else {
-	response.sendRedirect("http://localhost:8080/Biblioteca/HTML/index.jsp");
-}
-
-
 %>
 </body>
 </html>

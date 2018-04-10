@@ -168,7 +168,8 @@ public class UsuarioModelo extends Conector{
 				usuario.setDni(rs.getString("dni"));
 				usuario.setEdad(rs.getInt("edad"));
 				usuario.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
-				
+				usuario.setRol(rs.getString("rol"));
+				usuario.setPassword(rs.getString("password"));
 				return usuario;
 			}
 		} catch (SQLException e) {
