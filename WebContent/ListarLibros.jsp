@@ -9,6 +9,7 @@ LibroModelo libroModelo = new LibroModelo();
 PrestamoModelo prestamoModelo = new PrestamoModelo();
 ArrayList<Libro> libros = new ArrayList();
 
+Object sesion = session.getAttribute("usuario");
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,7 +38,24 @@ text-align: center;
 
 </style>
 <body>
-<jsp:include page="./includes/menu.html"></jsp:include>
+<%
+	if(sesion == null){
+		%>
+		<jsp:include page="./includes/menu.html"></jsp:include>
+		<%
+	}
+	else {
+		Usuario usuario = (Usuario)sesion;
+		
+		if(usuario.getRol().equals("normal")){
+			%>
+			<jsp:include page="./includes/menuNormal.jsp"></jsp:include>
+			<%
+		}
+	
+
+	
+%>
 <h3>Listado de los libros</h3>
 
 <table border = 1>
@@ -60,7 +78,7 @@ while(i.hasNext()){
 	out.print("<td><a href='ActualizarLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-warning'>Modificar</button></a></td>");
 	out.print("<td><a href='ActualizarLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-danger' title='Eliminar libro'><span class='icon-circle-with-cross'</span></button></a></td>");
 	
-	if(prestamoModelo.estaDisponible(libro)){
+	if(prestamoModelo.estaDisponible(libro) && usuario.getRol().equals("normal") && usuario != null){
 		out.print("<td class='table-success'><button type='button' class='btn btn-primary'>Prestar</td>");
 		
 	}
@@ -71,13 +89,9 @@ while(i.hasNext()){
 	out.print("</tr>");
 }
 
-
+	}
 %>
 </table>
-
-<br>
-<br>
-<a href='CrearLibro.jsp'> Crear libro</a>
 
 </body>
 </html>

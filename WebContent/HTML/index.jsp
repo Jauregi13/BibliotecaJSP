@@ -34,8 +34,7 @@ if(sesion == null){
 }
 else {
 	Usuario usuario = (Usuario)sesion;
-	String rol = usuario.getRol();
-	if(rol.equals("normal")){
+	if(usuario.getRol().equals("normal")){
 		%>
 		<jsp:include page="./../includes/menuNormal.jsp"></jsp:include>
 		<%

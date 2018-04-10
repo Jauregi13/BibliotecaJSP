@@ -2,11 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import ="modelo.*" %>
 <% 
-UsuarioModelo usuarioModelo = new UsuarioModelo();
 
-String dni = session.getAttribute("usuario").toString();
+Usuario usuario = (Usuario)session.getAttribute("usuario");
 
-Usuario usuario = usuarioModelo.selectPorDni(dni);
 %>
 <link rel="stylesheet" href="http://localhost:8080/Biblioteca/css/style.css" type ="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
