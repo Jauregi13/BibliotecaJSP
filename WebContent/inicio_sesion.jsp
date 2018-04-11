@@ -23,7 +23,30 @@ if(usuarioModelo.usuarioExiste(dni, password)){
 }
 
 else {
-	response.sendRedirect("http://localhost:8080/Biblioteca/HTML/index.jsp");
+	%>
+	<jsp:include page="./includes/menu.html"></jsp:include>
+	<div class="modal" id="inicio_sesion" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <h4 class="modal-title">Inicio de sesión incorrecta</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+          <p>Introduce de nuevo el DNI y la contraseña</p>
+        </div>
+        <div class="modal-footer">
+        
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
+  <%
+	//response.sendRedirect("http://localhost:8080/Biblioteca/HTML/index.jsp");
 }
 
 

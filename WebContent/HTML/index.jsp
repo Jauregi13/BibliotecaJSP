@@ -13,23 +13,7 @@ Object sesion = session.getAttribute("usuario");
 if(sesion == null){
 %>	
 	<jsp:include page="./../includes/menu.html"></jsp:include>
-	<div class="modal" id="inicio_sesion" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <div class="modal-header">
-          <h4 class="modal-title">Inicio de sesión incorrecta</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <div class="modal-body">
-          
-        </div>
-        
-        
-      </div>
-    </div>
-  </div>
+	
 <%
 }
 else {
@@ -42,7 +26,7 @@ else {
 	else {
 		
 		%>
-		<jsp:include page="./../includes/menu.html"></jsp:include>
+		<jsp:include page="./../includes/menuAdmin.jsp"></jsp:include>
 	<%
 	}
 	

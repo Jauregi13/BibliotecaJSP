@@ -77,8 +77,13 @@ li {
 		<li class="dropdown"><a class="py-2 d-none d-md-inline-block dropdown dropdown-toggle" data-toggle="dropdown" href="#">Libros</a>
 			<ul class="dropdown-menu">
 				<li><a class="dropdown-item" tabindex="-1" href="http://localhost:8080/Biblioteca/ListarLibros.jsp">Listar libros</a></li>
-			</ul>
-		</li> 
+				<li><a class="dropdown-item" tabindex="-1" href="http://localhost:8080/Biblioteca/CrearLibro.jsp">Insertar libro</a></li>
+			</ul></li>
+		<li class="dropdown"><a class="py-2 d-none d-md-inline-block dropdown dropdown-toggle" data-toggle="dropdown" href="#">Usuarios</a>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-item" tabindex="-1" href="Biblioteca/ListarUsuarios.jsp">Listar usuarios</a></li>
+				<li><a class="dropdown-item" tabindex="-1" href="#">Eliminar usuario</a></li>
+			</ul></li> 
 		<a class="py-2 d-none d-md-inline-block" href="#">Perfil</a>
 		<a class="py-2 d-none d-md-inline-block" href="#registro" style="margin-left: 110px;"><%=usuario.getNombre()%></a> 
 		<a class="py-2 d-none d-md-inline-block" href="http://localhost:8080/Biblioteca/cerrarSesion.jsp"  style="margin-right: -50px;">Cerrar Sesion</a>
