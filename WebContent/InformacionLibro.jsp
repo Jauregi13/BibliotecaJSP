@@ -20,6 +20,71 @@
 <title>Información del libro</title>
 </head>
 <body>
+	<%
+Object sesion = session.getAttribute("usuario");
+
+Object comprobacion = session.getAttribute("comprobacion");
+
+if(sesion == null){
+%>	
+	<jsp:include page="./../includes/menu.html"></jsp:include>
+<%
+}	
+else if(comprobacion.equals("incorrecto")){
+		%>
+		<jsp:include page="./../includes/menu.html"></jsp:include>
+		
+		<script>
+	      $(document).ready(function()
+	      {
+	         $("#inicioSesion").modal("show");
+	         
+	         $("#cerrar").click(function(){
+	        	 $("#inicioSesion").modal("hide");
+	         });
+	      });
+	    </script>
+		<div class="modal" id="inicioSesion">
+	    <div class="modal-dialog">
+	      <div class="modal-content border-danger text-danger">
+	      
+	        <div class="modal-header">
+	          <h4 class="modal-title">Inicio de sesión incorrecta</h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        
+	        <div class="modal-body">
+	          <p>Introduce de nuevo el DNI y la contraseña</p>
+	        </div>
+	        <div class="modal-footer">
+	        	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login" id="cerrar">Inténtalo de nuevo</button>
+	        </div>
+	        
+	        
+	      </div>
+	    </div>
+	  </div>
+	<%
+	session.removeAttribute("usuario");
+	session.removeAttribute("comprobacion");
+	}
+else {
+		Usuario usuario = (Usuario)sesion;
+		if(usuario.getRol().equals("normal")){
+			%>
+			<jsp:include page="./includes/menuNormal.jsp"></jsp:include>
+			<%
+		}
+		else {
+			
+			%>
+			<jsp:include page="./includes/menuAdmin.jsp"></jsp:include>
+		<%
+		}
+	}	
+
+
+%>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6">

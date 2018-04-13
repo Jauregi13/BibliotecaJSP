@@ -38,7 +38,7 @@ else if(comprobacion.equals("incorrecto")){
 	    </script>
 		<div class="modal" id="inicioSesion">
 	    <div class="modal-dialog">
-	      <div class="modal-content bg-danger text-white">
+	      <div class="modal-content border-danger text-danger">
 	      
 	        <div class="modal-header">
 	          <h4 class="modal-title">Inicio de sesión incorrecta</h4>
