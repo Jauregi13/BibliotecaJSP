@@ -6,8 +6,8 @@
 Usuario usuario = (Usuario)session.getAttribute("usuario");
 
 %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://localhost:8080/Biblioteca/css/style.css" type ="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -62,7 +62,7 @@ li {
 
 }
 
-.icon-home {
+.icon-home, .icon-user {
 
 	font-size : 25px;
 
@@ -80,14 +80,11 @@ li {
 				<li><a class="dropdown-item" tabindex="-1" href="http://localhost:8080/Biblioteca/ListarLibros.jsp">Listar libros</a></li>
 			</ul>
 		</li> 
-		<li class="dropdown"><a class="py-2 d-none d-md-inline-block dropdown dropdown-toggle" data-toggle="dropdown" href="#">Perfil</a>
+		<li class="dropdown" style="margin-left: 110px;"><a class="py-2 d-none d-md-inline-block dropdown dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-user"></span> <%=usuario.getNombre()%></a>
 			<ul class="dropdown-menu">
-				<li><a class="dropdown-item" tabindex="-1" href="http://localhost:8080/Biblioteca/Usuario/Perfil.jsp">Mostrar perfil</a></li>
-				<li></li><a class="dropdown-item" tabindex="-1" href="http://localhost:8080/Biblioteca/Usuario/ModificarPerfil.jsp">Modificar Perfil</a>
+				<li><a class="dropdown-item" tabindex="-1" href="http://localhost:8080/Biblioteca/Usuario/Perfil.jsp">Mi perfil</a></li>
 			</ul>
-		</li> 
-		
-		<a class="py-2 d-none d-md-inline-block" href="#registro" style="margin-left: 110px; width:200px;">Bienvenido, <%=usuario.getNombre()%></a> 
+		</li>
 		<a class="py-2 d-none d-md-inline-block" href="http://localhost:8080/Biblioteca/cerrarSesion.jsp"  style="margin-right: -50px;">Cerrar Sesion</a>
 	</div>
 </nav>

@@ -31,38 +31,50 @@
 		}
 	%>
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-3"></div>
-			<div class="col-sm-5">
+			<div class="row">
+				<div class="col-sm-12">				
 					<h3>Perfil de <%=usuario.getNombre()%> <%=usuario.getApellido()%></h3>
-					<form action="http://localhost:8080/Biblioteca/inicio_sesion.jsp" method="get">
-						<div class="form-group">
-							<label for="dni" class="col-form-label">DNI:</label> <input type="text" class="form-control" id="dni" name="dni">
-						</div>
-						<div class="form-group">
-							<label for="pwd">Contraseña:</label> <input type="password" class="form-control" id="password" name="password">
-						</div>
-						<button type="submit" class="btn btn-primary">Entrar</button>
-
-
-					</form>
-
-
-
-
+					<hr>		
+				</div>		
 			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<img src="./../images/perfil.png">
+					<br><br>
 
-
-
-
-
-
+								
+				</div>
+				<div class="col-sm-8">
+					<form action="" method="post">
+						<table class="table">
+							<tr>
+							<th scope="col">Nombre</td>
+							<td>
+								<div class="form-group">
+									<input type="text" value="<%=usuario.getNombre() %>">
+							
+								</div>
+							</td>
+							</tr>
+							<tr>
+							<th scope="col">Apellidos</td>
+							<td><input type="text" value="<%=usuario.getApellido() %>">
+							
+							</td>
+							</tr>
+							<tr>
+							<th scope="col">DNI</td>
+							<td><input type="text" value="<%=usuario.getDni() %>"></td>
+							<tr>
+							<th scope="col">Fecha de nacimiento</td>
+							<td><input type="date" value="<%=usuario.getNombre() %>"></td>
+							</tr>		
+						</table>
+						<input type="submit" class="btn btn-primary" value="Guardar">
+					</form>		
+				</div>	
+			</div>		
 		</div>
-
-
-
-
-	</div>
 
 
 	<%

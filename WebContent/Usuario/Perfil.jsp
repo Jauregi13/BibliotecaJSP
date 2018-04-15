@@ -33,14 +33,46 @@ else {
 		<%
 		}
 		%>
-		<center>
-			<h3>Perfil de <%=usuario.getNombre()%> <%=usuario.getApellido()%></h3>
-			
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">				
+					<h3>Perfil de <%=usuario.getNombre()%> <%=usuario.getApellido()%></h3>
+					<hr>		
+				</div>		
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<img src="./../images/perfil.png">
+					<br><br>
+					<a class="btn btn-primary" href="localhost:8080/Biblioteca/Usuario/ModificarPerfil.jsp" style="width:200px;">Modificar Perfil</a>
+
+								
+				</div>
+				<div class="col-sm-8">
+					<table class="table">
+						<tr>
+						<th scope="col">Nombre</td>
+						<td><%=usuario.getNombre() %></td>
+						</tr>
+						<tr>
+						<th scope="col">Apellidos</td>
+						<td><%=usuario.getApellido() %></td>
+						</tr>
+						<tr>
+						<th scope="col">DNI</td>
+						<td><%=usuario.getDni() %></td>
+						<tr>
+						<th scope="col">Fecha de nacimiento</td>
+						<td><%=usuario.getFecha_nacimiento() %>
+						</tr>		
+					</table>			
+				</div>	
+			</div>		
+		</div>
 		
 		
 		
 		
-		</center>
 		<%
 	}	
 
