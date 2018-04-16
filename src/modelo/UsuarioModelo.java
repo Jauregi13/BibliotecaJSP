@@ -58,7 +58,7 @@ public class UsuarioModelo extends Conector{
 			pst.setString(2, usuario.getApellido());
 			pst.setInt(3, usuario.getEdad());
 			pst.setString(4, usuario.getDni());
-			pst.setDate(5, (Date)usuario.getFecha_nacimiento());
+			pst.setDate(5, new java.sql.Date(usuario.getFecha_nacimiento().getTime()));
 			
 			pst.execute();
 		} catch (SQLException e) {
@@ -103,6 +103,8 @@ public class UsuarioModelo extends Conector{
 				usuario.setDni(rs.getString("dni"));
 				usuario.setEdad(rs.getInt("edad"));
 				usuario.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+				usuario.setRol(rs.getString("rol"));
+				usuario.setPassword(rs.getString("password"));
 				return usuario;
 			}
 		} catch (SQLException e) {

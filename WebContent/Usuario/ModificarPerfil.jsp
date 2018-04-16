@@ -89,7 +89,7 @@
 						String nombre = request.getParameter("nombre");
 						String apellido = request.getParameter("apellidos");
 						String dni = request.getParameter("dni");
-						Date fecha = (Date)formato.parse(request.getParameter("fecha"));
+						Date fecha = formato.parse(request.getParameter("fecha"));
 						int id = usuario.getId();
 						
 						usuarioActualizar.setNombre(nombre);
@@ -99,6 +99,11 @@
 						usuarioActualizar.setId(id);
 						
 						usuarioModelo.Update(usuarioActualizar);
+						
+						Usuario usuarioActualizado = usuarioModelo.selectPorId(id);
+						
+						session.setAttribute("usuario", usuarioActualizado);
+						response.sendRedirect("Perfil.jsp");
 						
 					}
 	
