@@ -44,7 +44,7 @@ else {
 				<div class="col-sm-4">
 					<img src="./../images/perfil.png">
 					<br><br>
-					<a class="btn btn-primary" href="localhost:8080/Biblioteca/Usuario/ModificarPerfil.jsp" style="width:200px;">Modificar Perfil</a>
+					<a class="btn btn-primary" href="http://localhost:8080/Biblioteca/Usuario/ModificarPerfil.jsp" style="width:200px;">Modificar Perfil</a>
 
 								
 				</div>
