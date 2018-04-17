@@ -31,47 +31,60 @@ ArrayList<Prestamo> prestamos = new ArrayList();
 <td>Entregado</td>
 </tr>
 <%
-prestamos = prestamoModelo.selectAll();
-Iterator<Prestamo> i = prestamos.iterator();
-while(i.hasNext()){
-	Prestamo prestamo = i.next();
-	out.print("<tr>");
-	out.print("<td>" + prestamo.getUsuario().getDni() + "</td>");
-	out.print("<td>" + prestamo.getLibro().getTitulo() + "</td>");
-	out.print("<td>" + prestamo.getFechaPrestamo() + "</td>");
-	out.print("<td>" + prestamo.getFechaLimite() + "</td>");
-	if(prestamo.isEntregado()){
-		%>
-		<td><center><span class="glyphicon glyphicon-thumbs-up"></span></center></td>
-		<script>
-		$(document).ready(function(){
-			if()
-			$("tr").attr("bgcolor", "green");
-		});
-		
-		
-		
-		
-		</script>
-		<%
-	}
-	else{
-		%>
-		<td><center><span class="glyphicon glyphicon-thumbs-down"></span></center></td>
-		<%
-	}
-		
-	out.print("</tr>");
-	
-	
-	
-	
-	
 
-	
+Object sesion = session.getAttribute("usuario");
+
+if (sesion == null) {
+%>
+<jsp:include page="./../includes/menu.html"></jsp:include>
+<%
 }
 
+else {
+	Usuario usuario = (Usuario) sesion;
+	if (usuario.getRol().equals("normal")) {
+%>
+		<jsp:include page="./includes/menuNormal.jsp"></jsp:include>
+<%
+	} else {
+%>
+		<jsp:include page="./../includes/menuAdmin.jsp"></jsp:include>
+<%
+	}
 
+
+
+		prestamos = (ArrayList<Prestamo>)prestamoModelo.SelectPorIdUsuario(usuario);
+		Iterator<Prestamo> i = prestamos.iterator();
+		while(i.hasNext()){
+			Prestamo prestamo = i.next();
+			out.print("<tr>");
+			out.print("<td>" + prestamo.getUsuario().getDni() + "</td>");
+			out.print("<td>" + prestamo.getLibro().getTitulo() + "</td>");
+			out.print("<td>" + prestamo.getFechaPrestamo() + "</td>");
+			out.print("<td>" + prestamo.getFechaLimite() + "</td>");
+			if(prestamo.isEntregado()){
+				%>
+				<td><center><span class="glyphicon glyphicon-thumbs-up"></span></center></td>
+				<%
+			}
+			else{
+				%>
+				<td><center><span class="glyphicon glyphicon-thumbs-down"></span></center></td>
+				<%
+			}
+				
+			out.print("</tr>");
+			
+			
+			
+			
+			
+		
+			
+		}
+
+}
 %>
 
 

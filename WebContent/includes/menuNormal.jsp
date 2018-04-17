@@ -75,11 +75,8 @@ li {
 	<div
 		class="container d-flex flex-column flex-md-row justify-content-between">
 		<a class="py-2" href="http://localhost:8080/Biblioteca/HTML/index.jsp"><span class="icon-home"></span></a>
-		<li class="dropdown" style="display: inline-block;"><a class="py-2 d-none d-md-inline-block dropdown dropdown-toggle" data-toggle="dropdown" href="#">Libros</a>
-			<ul class="dropdown-menu">
-				<li><a class="dropdown-item" tabindex="-1" href="http://localhost:8080/Biblioteca/ListarLibros.jsp">Listar libros</a></li>
-			</ul>
-		</li> 
+		<a class="py-2" href="http://localhost:8080/Biblioteca/ListarLibros.jsp">Listar libros</a>
+		<a class="py-2" href="http://localhost:8080/Biblioteca/ListarPrestamos.jsp">Listar prestamos</a>
 		<li class="dropdown" style="margin-left: 110px;"><a class="py-2 d-none d-md-inline-block dropdown dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-user"></span> <%=usuario.getNombre()%></a>
 			<ul class="dropdown-menu">
 				<li><a class="dropdown-item" tabindex="-1" href="http://localhost:8080/Biblioteca/Usuario/Perfil.jsp">Mi perfil</a></li>

@@ -102,7 +102,7 @@ while(i.hasNext()){
 	}
 	
 	if(prestamoModelo.estaDisponible(libro) && usuario.getRol().equals("normal") && usuario != null ){
-		out.print("<td><button type='button' class='btn btn-primary'>Prestar</td>");
+		out.print("<td><a href='CogerPrestado.jsp?id=" +libro.getId()+ "' role='button' class='btn btn-primary'>Prestar</a></td>");
 	}
 		
 	out.print("</tr>");
