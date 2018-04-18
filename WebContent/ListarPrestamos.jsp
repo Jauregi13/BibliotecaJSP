@@ -4,6 +4,8 @@
 <%@ page import="modelo.*" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Iterator" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Calendar" %>
 <%
 PrestamoModelo prestamoModelo = new PrestamoModelo();
 ArrayList<Prestamo> prestamos = new ArrayList();
@@ -13,23 +15,10 @@ ArrayList<Prestamo> prestamos = new ArrayList();
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="css/style.css" type ="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Listado de prestamos</title>
 </head>
 <body>
-<h3>Listado de prestamos</h3>
 
-<table border = 1>
-<tr>
-<td>DNI</td>
-<td>Titulo</td>
-<td>Fecha de prestamo</td>
-<td>Fecha de limite</td>
-<td>Entregado</td>
-</tr>
 <%
 
 Object sesion = session.getAttribute("usuario");
@@ -51,26 +40,47 @@ else {
 		<jsp:include page="./../includes/menuAdmin.jsp"></jsp:include>
 <%
 	}
+%>
+	<div class ="container">
+		<h3>Libros no devueltos</h3>
 
+		<table class="table">
+		<tr>
+			<td>Titulo</td>
+			<td>Fecha de prestamo</td>
+			<td>Dias Restantes</td>
+			<td>Entregado</td>
+		</tr>
 
+<%
 
 		prestamos = (ArrayList<Prestamo>)prestamoModelo.SelectPorIdUsuario(usuario);
 		Iterator<Prestamo> i = prestamos.iterator();
+		
+		long milisegundosDia = 24 * 60 * 60 * 1000;
+		Date fecha_actual = new Date();
 		while(i.hasNext()){
 			Prestamo prestamo = i.next();
+			
+			long dias = (prestamo.getFechaLimite().getTime() - fecha_actual.getTime()) / milisegundosDia;
 			out.print("<tr>");
-			out.print("<td>" + prestamo.getUsuario().getDni() + "</td>");
 			out.print("<td>" + prestamo.getLibro().getTitulo() + "</td>");
 			out.print("<td>" + prestamo.getFechaPrestamo() + "</td>");
-			out.print("<td>" + prestamo.getFechaLimite() + "</td>");
+			%>
+			<td>
+				<div class="progress">
+	  				<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow='<%=dias %>' aria-valuemin="0" aria-valuemax="21" style="width: 100%"></div>
+				</div>
+			</td>
+			<%
 			if(prestamo.isEntregado()){
 				%>
-				<td><center><span class="glyphicon glyphicon-thumbs-up"></span></center></td>
+				<td><center><span class="icon-thumbs-up"></span></center></td>
 				<%
 			}
 			else{
 				%>
-				<td><center><span class="glyphicon glyphicon-thumbs-down"></span></center></td>
+				<td><span class="icon-thumbs-down"></span></td>
 				<%
 			}
 				
@@ -88,8 +98,8 @@ else {
 %>
 
 
-</table>
-
+		</table>
+</div>
 
 
 </body>

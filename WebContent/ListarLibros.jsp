@@ -61,55 +61,58 @@ text-align: center;
 
 	
 %>
-<h3>Listado de los libros</h3>
 
-<table border = 1>
-<tr>
-<td>Titulo</td>
-<td>Autor</td>
-<%
-if(usuario.getRol().equals("normal")){
-	out.print("<td></td>");
-}
-else{
-	out.print("<td colspan='3'>Acciones</td>");
-}
-%>
-<td>Estado</td>
-</tr>
-<%
 
-libros = libroModelo.selectAll();
-Iterator<Libro> i = libros.iterator();
-while(i.hasNext()){
-	Libro libro = i.next();
-	out.print("<tr>");
-	out.print("<td>" + libro.getTitulo() + "</td>");
-	out.print("<td>" + libro.getAutor() + "</td>");
-	out.print("<td><a href='InformacionLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-primary'><span class='icon-info'></span>Info</button></a></td>");
-	if(usuario.getRol().equals("admin")){
-		out.print("<td><a href='ActualizarLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-warning'>Modificar</button></a></td>");
-		out.print("<td><a href='ActualizarLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-danger' title='Eliminar libro'><span class='icon-circle-with-cross'</span></button></a></td>");
-		
+<div class ="container">
+
+	<h3>Listado de los libros</h3>
+	<table class ="table">
+	<tr>
+	<td>Titulo</td>
+	<td>Autor</td>
+	<%
+	if(usuario.getRol().equals("normal")){
+		out.print("<td></td>");
 	}
+	else{
+		out.print("<td colspan='3'>Acciones</td>");
+	}
+	%>
+	<td>Estado</td>
+	</tr>
+	<%
 	
-	if(prestamoModelo.estaDisponible(libro)){
-		out.print("<td><div class='alert alert-success' role='alert' style='width:100%'>Disponible</div></td>");
+	libros = libroModelo.selectAll();
+	Iterator<Libro> i = libros.iterator();
+	while(i.hasNext()){
+		Libro libro = i.next();
+		out.print("<tr>");
+		out.print("<td>" + libro.getTitulo() + "</td>");
+		out.print("<td>" + libro.getAutor() + "</td>");
+		out.print("<td><a href='InformacionLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-primary'><span class='icon-info'></span>Info</button></a></td>");
+		if(usuario.getRol().equals("admin")){
+			out.print("<td><a href='ActualizarLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-warning'>Modificar</button></a></td>");
+			out.print("<td><a href='ActualizarLibro.jsp?id="+libro.getId()+"'><button type='button' class='btn btn-danger' title='Eliminar libro'><span class='icon-circle-with-cross'</span></button></a></td>");
+			
+		}
 		
-	}
-	else {
-		out.print("<td><div class='alert alert-danger' role='alert'>No disponible</div></td>");
-	}
-	
-	if(prestamoModelo.estaDisponible(libro) && usuario.getRol().equals("normal") && usuario != null ){
-		out.print("<td><a href='CogerPrestado.jsp?id=" +libro.getId()+ "' role='button' class='btn btn-primary'>Prestar</a></td>");
-	}
+		if(prestamoModelo.estaDisponible(libro)){
+			out.print("<td><div class='alert alert-success' role='alert' style='width:100%'>Disponible</div></td>");
+			
+		}
+		else {
+			out.print("<td><div class='alert alert-danger' role='alert'>No disponible</div></td>");
+		}
 		
-	out.print("</tr>");
-}
+		if(prestamoModelo.estaDisponible(libro) && usuario.getRol().equals("normal") && usuario != null ){
+			out.print("<td><a href='CogerPrestado.jsp?id=" +libro.getId()+ "' role='button' class='btn btn-primary'>Coger Prestado</a></td>");
+		}
+			
+		out.print("</tr>");
 	}
-%>
-</table>
-
+		}
+	%>
+	</table>
+</div>
 </body>
 </html>
